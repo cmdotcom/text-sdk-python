@@ -10,7 +10,7 @@ class Message:
     minimumNumberOfMessageParts = 1
     maximumNumberOfMessageParts = 8
     hybridAppKey = ''
-    allowedChannels = []
+    allowedChannels = ['SMS']
     richContent = None
     SENDER_FALLBACK = 'cm.com'
     MESSAGEPARTS_MINIMUM = 1
@@ -40,4 +40,4 @@ class Message:
         if( (len(self.to) + len(recipients)) > self.RECIPIENTS_MAXIMUM):
             print('Maximum amount of Recipients exceeded. (' + str(self.RECIPIENTS_MAXIMUM) + ')')
         else:
-            self.to = self.to + [recipients]
+            self.to = self.to + recipients
