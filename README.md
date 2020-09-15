@@ -12,27 +12,27 @@ Under Construction
 Use your productToken which authorizes you on the CM platform. Get yours on CM.com
 
 ```cs
-from CMText.TextClient import TextClient
+    from CMText.TextClient import TextClient
 
-client = TextClient(apikey=key)
+    client = TextClient(apikey=key)
 ```
 
 ## Send a message
 By calling `SendSingleMessage` and providing message text, sender name, recipient phone number(s).
 
 ```cs
-   client = TextClient(apikey=key)
-   client.SendSingleMessage(message=message, from_='CM.com', to=Recipients)
+    client = TextClient(apikey=key)
+    client.SendSingleMessage(message=message, from_='CM.com', to=Recipients)
 ```
 
 ## Sending multiple messages
 By calling `AddMessage` and providing message text, sender name, recipient phone number(s) you can queue multiple messages. Send them by calling `send`.
 
 ```cs
-   client = TextClient(apikey=key)
-   client.AddMessage(message=message, from_='pythonSDK', to=Recipients)
-   client.AddMessage(message=message2, from_='pythonSDK', to=Recipients2)
-   response = client.send()
+    client = TextClient(apikey=key)
+    client.AddMessage(message=message, from_='pythonSDK', to=Recipients)
+    client.AddMessage(message=message2, from_='pythonSDK', to=Recipients2)
+    response = client.send()
 ```
 
 ## Sending a rich message
@@ -41,5 +41,5 @@ Under construction
 ## Get the result
 Sending a message by calling `send` returns the response body. Response is of type: https://requests.readthedocs.io/en/master/user/quickstart/#response-content
 ```cs
-   response = client.send()
+    response = client.send()
 ```
