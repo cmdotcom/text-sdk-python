@@ -1,12 +1,21 @@
 #Class chanels
 #Contains all known channels
 class Channels:
-    SMS = 'SMS'
-    WHATSAPP = 'Whatsapp'
-    PUSH = 'Push'
-    RCS = 'RCS'
-    VIBER = 'Viber'
-    VOICE = 'Voice'
-    IMESSAGE = 'iMessage'
-    Line = 'Line'
-    TWITTER = 'Twitter'
+
+    channels = {'SMS',
+                'Whatsapp',
+                'Push',
+                'RCS',
+                'Viber',
+                'Voice',
+                'iMessage',
+                'Line',
+                'Twitter',
+                }
+
+    def Check_Channels(self, allowedChannels):
+        for allowedChannel in allowedChannels:
+            if(not allowedChannel in self.channels):
+                print(allowedChannel + ' is not a valid Channel name. Check Spelling?')
+                return False
+        return True

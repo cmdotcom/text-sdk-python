@@ -3,6 +3,7 @@ from CMText.Message import Message
 import json
 import requests
 
+
 class TextClient:
     gateway = ''
     apikey = ''
@@ -10,64 +11,65 @@ class TextClient:
     MESSAGES_MAXIMUM = 100
     VERSION = '1.0'
 
+    # Initialize Client with defaul Gateway Gateways.Global
     def __init__(self, apikey, gateway=Gateways.Global):
         self.apikey = apikey
         self.gateway = gateway
 
-    #send 1 message to one or multiple locations
-    def SendSingleMessage(self, message, from_, to=[], reference=None):
+    # Send 1 message to one or multiple locations
+    def SendSingleMessage(self, message, from_, to=[], reference=None, allowedChannels=None):
         self.messages = []
-        self.messages.append(Message(message, from_=from_, to=to, reference=reference))
+        self.messages.append(Message(message, from_=from_, to=to, reference=reference, allowedChannels=allowedChannels))
         self.send()
 
-    #add a message to the list
-    def AddMessage(self, message, from_='', to=[], reference=None):
-        self.messages.append(Message(message, from_=from_, to=to, reference=reference))
+    # Add a message to the list
+    def AddMessage(self, message, from_='', to=[], reference=None, allowedChannels=None):
+        self.messages.append(Message(message, from_=from_, to=to, reference=reference, allowedChannels=allowedChannels))
 
-    #send all messages in the list
+    # Send all messages in the list
     def send(self):
-        if(len(self.messages) == 0):
+        if len(self.messages) == 0:
             print('No messages in the queue')
             return
-        if(len(self.messages) > self.MESSAGES_MAXIMUM):
+        if len(self.messages) > self.MESSAGES_MAXIMUM:
             print('Messages exceeds MESSAGES_MAXIMUM')
             return
 
-        #set data for post
+        # Set data for post
         data = self.encodeData(self.messages)
 
-        #set headers for post
+        # Set headers for post
         headers = {
              "Content-Type": "application/json; charset=utf-8",
              "Content-Length": str(len(data)),
              'X-CM-SDK': 'text-sdk-python-' + self.VERSION
          }
 
-        #send the message
+        # Send the message
         try:
+            #response = requests.post("https://gw.cmtelecom.com/v1.0/message", data=data, headers=headers)
             print(data)
-            #html = requests.post("https://gw.cmtelecom.com/v1.0/message", data=data, headers=headers).text
-            #print(html)
-
         except Exception as e:
             print(e)
 
-        #clear messages
+        # Clear messages
         self.messages = []
+        # Return response
+        #return response
 
-    #Method to encode Data, Gateway accepts this format
+    # Method to encode Data, Gateway accepts this format
     def encodeData(self, messages):
-        #set productToken
+        # Set productToken
         data = {"messages": {"authentication":{"producttoken": self.apikey}}}
         data['messages']['msg'] = []
-        #for each message do this
+        # For each message do this
         for message in messages:
-            #list all recipients
+            # List all recipients
             to = []
             for toItem in message.to:
                 to = to + [{'number': toItem}]
 
-            #create message container
+            # Create message container
             temp = {"allowedChannels": message.allowedChannels,
                     "from": message.from_,
                     "to": to,
@@ -77,6 +79,6 @@ class TextClient:
                     }
                     }
             data['messages']['msg'] = data['messages']['msg'] + [temp]
-        #json encode the data
+        # Json encode the data
         data = json.dumps(data)
         return data
