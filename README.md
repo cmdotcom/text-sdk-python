@@ -1,5 +1,5 @@
 # text-sdk-python
-Under Construction.
+Under Construction..
 ![Upload Python Package](https://github.com/cmdotcom/text-sdk-python/workflows/Upload%20Python%20Package/badge.svg)
 
 ## A helper library to sending messages using python.
