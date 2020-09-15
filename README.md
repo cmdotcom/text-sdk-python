@@ -1,5 +1,6 @@
 # text-sdk-python
 Under Construction.
+![Upload Python Package](https://github.com/cmdotcom/text-sdk-python/workflows/Upload%20Python%20Package/badge.svg)
 
 ## A helper library to sending messages using python.
 Want to send messages in your Python application? Then you are at the right address.
