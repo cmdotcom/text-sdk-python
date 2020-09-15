@@ -1,4 +1,5 @@
 # text-sdk-python
+Under Construction.
 
 ## A helper library to sending messages using python.
 Want to send messages in your Python application? Then you are at the right address.
@@ -30,7 +31,7 @@ By calling `AddMessage` and providing message text, sender name, recipient phone
 ```cs
    client = TextClient(apikey=key)
    client.AddMessage(message=message, from_='pythonSDK', to=Recipients)
-    client.AddMessage(message=message2, from_='pythonSDK', to=Recipients2)
+   client.AddMessage(message=message2, from_='pythonSDK', to=Recipients2)
    response = client.send()
 ```
 
