@@ -10,7 +10,7 @@ on:
 jobs:
   deploy:
 
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
     - uses: actions/checkout@v2
@@ -31,4 +31,4 @@ jobs:
       run: |
         python setup.py sdist bdist_wheel
         python -m pip install --user --upgrade twine
-        python -m twine upload --repository pypi dist/*
+        python -m twine upload --repository dist/*
