@@ -52,7 +52,6 @@ class TextClient:
         # Send the message
         try:
             response = requests.post("https://gw.cmtelecom.com/v1.0/message", data=data, headers=headers)
-            print(data)
         except Exception as e:
             print(e)
 
