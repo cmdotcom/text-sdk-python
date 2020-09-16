@@ -9,7 +9,7 @@ class TextClient:
     apikey = ''
     messages = []
     MESSAGES_MAXIMUM = 100
-    VERSION = '1.0'
+    VERSION = '1.0.2'
 
     # Initialize Client with defaul Gateway Gateways.Global
     def __init__(self, apikey, gateway=Gateways.Global):

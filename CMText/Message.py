@@ -42,7 +42,7 @@ class Message:
         self.minimumNumberOfMessageParts = self.MESSAGEPARTS_MINIMUM
         self.maximumNumberOfMessageParts = self.MESSAGEPARTS_MAXIMUM
 
-        self.customgrouping3 = 'text-sdk-python-' + '1.0' # + TextClient.VERSION #find version Texclient
+        self.customgrouping3 = 'text-sdk-python-' + '1.0.2' # + TextClient.VERSION #find version Texclient
 
     # add an array of recipients
     def AddRecipients(self, recipients=[]):
