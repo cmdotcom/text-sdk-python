@@ -49,9 +49,6 @@
       <module name="text-sdk-python" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="C:\Users\joris.pennings\PycharmProjects\text-sdk-python\venv\Scripts\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Example" />
       <option name="IS_MODULE_SDK" value="false" />
@@ -91,33 +88,37 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="414" y="174" width="1092" height="763" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1600158173000">
+    <state x="414" y="174" width="1092" height="763" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1600178521326">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="414" y="174" width="1092" height="763" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1600158173000" />
+    <state x="414" y="174" width="1092" height="763" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1600178521326" />
     <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1600094632018">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1600094632018" />
+    <state x="827" y="310" key="EnvironmentVariablesDialog" timestamp="1600178386473">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="827" y="310" key="EnvironmentVariablesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1600178386473" />
     <state x="740" y="298" key="FileChooserDialogImpl" timestamp="1600158171393">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="298" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1600158171393" />
-    <state width="1362" height="266" key="GridCell.Tab.0.bottom" timestamp="1600163512676">
+    <state width="1362" height="266" key="GridCell.Tab.0.bottom" timestamp="1600183797613">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1362" height="266" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1600163512676" />
-    <state width="1362" height="266" key="GridCell.Tab.0.center" timestamp="1600163512676">
+    <state width="1362" height="266" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1600183797613" />
+    <state width="1362" height="266" key="GridCell.Tab.0.center" timestamp="1600183797613">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1362" height="266" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1600163512676" />
-    <state width="1362" height="266" key="GridCell.Tab.0.left" timestamp="1600163512676">
+    <state width="1362" height="266" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1600183797613" />
+    <state width="1362" height="266" key="GridCell.Tab.0.left" timestamp="1600183797613">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1362" height="266" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1600163512676" />
-    <state width="1362" height="266" key="GridCell.Tab.0.right" timestamp="1600163512676">
+    <state width="1362" height="266" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1600183797613" />
+    <state width="1362" height="266" key="GridCell.Tab.0.right" timestamp="1600183797613">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1362" height="266" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1600163512676" />
+    <state width="1362" height="266" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1600183797613" />
   </component>
 </project>
