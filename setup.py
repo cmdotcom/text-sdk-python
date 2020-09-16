@@ -4,8 +4,8 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="text_sdk_python_CM", # Replace with your own username
-    version="0.0.5",
+    name="CM_text_sdk_python", # Replace with your own username
+    version="1.0.0",
     author="Joris Pennings",
     author_email="joris.pennings@cm.com",
     description="Python SDK for text with CM.",
