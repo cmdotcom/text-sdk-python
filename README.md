@@ -1,6 +1,7 @@
 # Text-sdk-python
 ![publish to PyPi](https://github.com/cmdotcom/text-sdk-python/workflows/publish%20to%20PyPi/badge.svg)
-
+![PyPi](https://img.shields.io/pypi/v/CM_text_sdk_python
+)
 ## A helper library to sending messages using python.
 Want to send messages in your Python application? Then you are at the right address.
 If you want to get all the functionalities, go to: [CM.com API Docs](https://docs.cmtelecom.com/bulk-sms/v1.0)
