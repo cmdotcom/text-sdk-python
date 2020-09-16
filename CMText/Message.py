@@ -19,7 +19,7 @@ class Message:
     RECIPIENTS_MAXIMUM  = 1000
 
     # init function of class Message
-    def __init__(self, body='', type=MessageBodyTypes.AUTO, from_=None, to=[], reference=None, allowedChannels=None):
+    def __init__(self, body='', type=MessageBodyTypes.AUTO, from_=None, to=[], reference=None, allowedChannels=None, media=None):
         self.body = body
         self.type = type
         if from_ is not None:
@@ -31,6 +31,10 @@ class Message:
         ch = Channels()
         if((allowedChannels != None) and ch.Check_Channels(allowedChannels=allowedChannels)):
             self.allowedChannels = allowedChannels
+
+        # if media is not None
+        if media is not None:
+            self.richContent = media
 
         self.reference = reference
         self.AddRecipients(recipients=to)

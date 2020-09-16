@@ -5,13 +5,13 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="text_sdk_python_CM", # Replace with your own username
-    version="0.0.4",
-    author="Example Author",
-    author_email="author@example.com",
-    description="A small example package",
+    version="0.0.5",
+    author="Joris Pennings",
+    author_email="joris.pennings@cm.com",
+    description="Python SDK for text with CM.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/pypa/sampleproject",
+    url="https://github.com/cmdotcom/text-sdk-python",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",

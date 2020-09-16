@@ -1,6 +1,5 @@
-# text-sdk-python
-Under Construction..
-![Upload Python Package](https://github.com/cmdotcom/text-sdk-python/workflows/Upload%20Python%20Package/badge.svg)
+# Text-sdk-python
+Under Construction.
 
 ## A helper library to sending messages using python.
 Want to send messages in your Python application? Then you are at the right address.
@@ -37,7 +36,19 @@ By calling `AddMessage` and providing message text, sender name, recipient phone
 ```
 
 ## Sending a rich message
-Under construction
+By calling `AddRichMessage` and providing `Media`, message text, sender name, recipient phone number(s) you can queue multiple Rich messages. Send them by calling `send`.
+
+```cs
+    media = {
+            "mediaName": "conversational-commerce",
+            "mediaUri": "https://www.cm.com/cdn/cm/cm.png",
+            "mimeType": "image/png"
+        }
+
+    client = TextClient(apikey=key)
+    client.AddRichMessage(message=message, from_='pythonSDK', to=to, allowedChannels=allowedChannels, media=media)
+    response = client.send()
+```
 
 ## Get the result
 Sending a message by calling `send` returns the response body. Response is of type: https://requests.readthedocs.io/en/master/user/quickstart/#response-content

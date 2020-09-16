@@ -26,6 +26,10 @@ class TextClient:
     def AddMessage(self, message, from_='', to=[], reference=None, allowedChannels=None):
         self.messages.append(Message(message, from_=from_, to=to, reference=reference, allowedChannels=allowedChannels))
 
+    # Add a rich message to the list
+    def AddRichMessage(self, message, media, from_='', to=[], reference=None, allowedChannels=None):
+        self.messages.append(Message(message, media=media, from_=from_, to=to, reference=reference, allowedChannels=allowedChannels))
+
     # Send all messages in the list
     def send(self):
         if len(self.messages) == 0:
@@ -47,7 +51,7 @@ class TextClient:
 
         # Send the message
         try:
-            #response = requests.post("https://gw.cmtelecom.com/v1.0/message", data=data, headers=headers)
+            response = requests.post("https://gw.cmtelecom.com/v1.0/message", data=data, headers=headers)
             print(data)
         except Exception as e:
             print(e)
@@ -55,13 +59,15 @@ class TextClient:
         # Clear messages
         self.messages = []
         # Return response
-        #return response
+        return response
 
     # Method to encode Data, Gateway accepts this format
     def encodeData(self, messages):
         # Set productToken
         data = {"messages": {"authentication":{"producttoken": self.apikey}}}
         data['messages']['msg'] = []
+
+
         # For each message do this
         for message in messages:
             # List all recipients
@@ -78,7 +84,21 @@ class TextClient:
                         "content": message.body
                     }
                     }
+
+            # If message is rich
+            if message.richContent is not None:
+                temp["richContent"] = {
+                    "conversation": [{
+                        "text": message.body
+                    },
+                    {
+                        "media": message.richContent,
+                    }]
+                }
+
             data['messages']['msg'] = data['messages']['msg'] + [temp]
+
+
         # Json encode the data
         data = json.dumps(data)
         return data
