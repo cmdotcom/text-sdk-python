@@ -1,5 +1,6 @@
 from CMText.MessageBodyTypes import MessageBodyTypes
 from CMText.Channels import Channels
+from CMText.version import __version__
 
 class Message:
     body = ''
@@ -42,10 +43,12 @@ class Message:
         self.minimumNumberOfMessageParts = self.MESSAGEPARTS_MINIMUM
         self.maximumNumberOfMessageParts = self.MESSAGEPARTS_MAXIMUM
 
-        self.customgrouping3 = 'text-sdk-python-' + '1.0.2' # + TextClient.VERSION #find version Texclient
+        self.customgrouping3 = 'text-sdk-python-' + __version__
 
     # add an array of recipients
-    def AddRecipients(self, recipients=[]):
+    def AddRecipients(self, recipients=None):
+        if recipients is None:
+            recipients = []
         # check if total recipients exceeds RECIPIENTS_MAXIMUM
         if(len(self.to) + len(recipients) > self.RECIPIENTS_MAXIMUM):
             print('Maximum amount of Recipients exceeded. (' + str(self.RECIPIENTS_MAXIMUM) + ')')

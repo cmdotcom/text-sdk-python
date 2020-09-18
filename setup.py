@@ -3,9 +3,13 @@ import setuptools
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
+version = {}
+with open("CMText/version.py") as fp:
+    exec(fp.read(), version)
+
 setuptools.setup(
     name="CM_text_sdk_python", # Replace with your own username
-    version="1.0.2",
+    version=version['__version__'],
     author="Joris Pennings",
     author_email="joris.pennings@cm.com",
     description="Python SDK for text with CM.",
