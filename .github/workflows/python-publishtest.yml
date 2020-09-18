@@ -5,7 +5,9 @@ name: publish to testPyPi
 
 on: 
   push:
-    paths: 'CMText/version.py'
+    paths: 
+    - '!**'
+    - 'CMText/version.py'
 
 jobs:  
   deploy:
