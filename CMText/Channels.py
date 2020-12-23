@@ -11,6 +11,7 @@ class Channels:
                 'iMessage',
                 'Line',
                 'Twitter',
+                'MobilePush',
                 }
 
     def Check_Channels(self, allowedChannels):
