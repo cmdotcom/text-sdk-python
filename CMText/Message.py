@@ -13,6 +13,7 @@ class Message:
     maximumNumberOfMessageParts = 8
     hybridAppKey = ''
     allowedChannels = ['SMS']
+    template = None
     richContent = None
     SENDER_FALLBACK = 'cm.com'
     MESSAGEPARTS_MINIMUM = 1
@@ -20,7 +21,7 @@ class Message:
     RECIPIENTS_MAXIMUM  = 1000
 
     # init function of class Message
-    def __init__(self, body='', type=MessageBodyTypes.AUTO, from_=None, to=[], reference=None, allowedChannels=None, media=None):
+    def __init__(self, body='', type=MessageBodyTypes.AUTO, from_=None, to=[], reference=None, allowedChannels=None, media=None, template=None):
         self.body = body
         self.type = type
         if from_ is not None:
@@ -36,6 +37,10 @@ class Message:
         # if media is not None
         if media is not None:
             self.richContent = media
+
+        # if template is not None
+        if template is not None:
+            self.template = template
 
         self.reference = reference
         self.AddRecipients(recipients=to)

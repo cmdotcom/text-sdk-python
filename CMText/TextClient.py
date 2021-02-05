@@ -1,10 +1,9 @@
 from CMText.Gateways import Gateways
 from CMText.Message import Message
+from CMText.WhatsappTemplate import WhatsappTemplate
 from CMText.version import __version__
 import json
 import requests
-
-
 
 class TextClient:
     gateway = ''
@@ -32,6 +31,10 @@ class TextClient:
     def AddRichMessage(self, message, media, from_='', to=[], reference=None, allowedChannels=None):
         self.messages.append(Message(message, media=media, from_=from_, to=to, reference=reference, allowedChannels=allowedChannels))
 
+    # Add a Whatsapp Template message to the list
+    def AddWhatsappTemplateMessage(self, template, from_='', to=[], reference=None, media=None):
+        self.messages.append(Message(media=media, from_=from_, to=to, reference=reference, allowedChannels=['Whatsapp'], template=template))
+
     # Send all messages in the list
     def send(self):
         if len(self.messages) == 0:
@@ -51,7 +54,7 @@ class TextClient:
              'X-CM-SDK': 'text-sdk-python-' + self.VERSION
          }
 
-        # Send the message
+        # Send the message(s)
         try:
             response = requests.post("https://gw.cmtelecom.com/v1.0/message", data=data, headers=headers)
         except Exception as e:
@@ -67,7 +70,6 @@ class TextClient:
         # Set productToken
         data = {"messages": {"authentication":{"producttoken": self.apikey}}}
         data['messages']['msg'] = []
-
 
         # For each message do this
         for message in messages:
@@ -86,8 +88,29 @@ class TextClient:
                     }
                     }
 
-            # If message is rich
-            if message.richContent is not None:
+            # If message is template
+            if message.template is not None:
+                temp["richContent"] = {
+                    "conversation": [{
+                        "template":
+                            {
+                                "whatsapp":
+                                    {
+                                        "namespace": message.template.namespace,
+                                        "element_name": message.template.element_name,
+                                        "language":
+                                            {
+                                                "policy": message.template.language_policy,
+                                                "code": message.template.language_code
+                                            },
+                                        "components": message.template.components
+                                    }
+                            }
+                    }]
+                }
+
+            # If message is rich and no template
+            if message.template is None and message.richContent is not None:
                 temp["richContent"] = {
                     "conversation": [{
                         "text": message.body

@@ -55,6 +55,21 @@ By calling `AddRichMessage` and providing `Media`, message text, sender name, re
     response = client.send()
 ```
 
+## Sending a Whatsapp Template message
+By calling `AddWhatsappTemplateMessage` and providing `Template`, sender name, recipient phone number(s) you can queue multiple Whatsapp Template messages. Send them by calling `send`.
+
+```cs
+    template_namespace = "Your-Template-Namespace"
+    template_element_name = "Replace with Template Name"
+    template = WhatsappTemplate(template_namespace, template_element_name)
+    
+    client = TextClient(apikey=key)
+    client.AddWhatsappTemplateMessage(from_='pythonSDK', to=to, template=template)
+    response = client.send()
+```
+
+See Examples folder for more examples.
+
 ## Get the result
 Sending a message by calling `send` returns the response body. Response is of type: https://requests.readthedocs.io/en/master/user/quickstart/#response-content
 ```cs
