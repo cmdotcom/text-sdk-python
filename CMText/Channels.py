@@ -13,7 +13,8 @@ class Channels:
                 'Twitter',
                 'MobilePush',
                 'Facebook Messenger',
-                'Google Business Messages'
+                'Google Business Messages',
+                'Instagram'
                 }
 
     def Check_Channels(self, allowedChannels):
