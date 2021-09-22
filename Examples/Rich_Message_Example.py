@@ -1,9 +1,15 @@
+import os
 from CMText.TextClient import TextClient
 
-# Message to be send
-message = 'Examples message to be send'
+# fetch the API key from environment variables
+UNIQUE_API_KEY = os.getenv("CM_API_KEY")
+if UNIQUE_API_KEY is None:
+    print('Please fill an environment variable named CM_API_KEY with your API key.')
 
-# Media to be send
+# Message to be sent
+message = 'Examples message to be sent'
+
+# Media to be sent
 media = {
             "mediaName": "conversational-commerce",
             "mediaUri": "https://www.cm.com/cdn/cm/cm.png",

@@ -1,11 +1,14 @@
+import os
 from CMText.TextClient import TextClient
 from CMText.WhatsappTemplate import WhatsappTemplate
 
-# Your api-Key
-key = 'Your-Key'
+# fetch the API key from environment variables
+UNIQUE_API_KEY = os.getenv("CM_API_KEY")
+if UNIQUE_API_KEY is None:
+    print('Please fill an environment variable named CM_API_KEY with your API key.')
 
 # Recipients
-to = ['00123456789','00986837265']
+to = ['00123456789', '00986837265']
 
 # Template
 template_namespace = "Your_Template_Namespace"
