@@ -1,7 +1,7 @@
 from CMText.TextClient import TextClient
 
 # Message to be send
-message = 'Examples message to be send'
+message = 'Example message to be sent'
 
 # Media to be send
 media = {

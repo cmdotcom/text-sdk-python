@@ -1,8 +1,8 @@
 from CMText.TextClient import TextClient
 
 # Message to be send
-message = 'Examples message to be send'
-message2 = 'Examples 2 message to be send'
+message = 'Example message to be sent'
+message2 = 'Example 2 message to be sent'
 
 # Recipients
 to = ['003156789000', '002134567890']

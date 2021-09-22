@@ -5,7 +5,7 @@ from CMText.WhatsappTemplate import WhatsappTemplate
 key = 'Your-Key'
 
 # Recipients
-to = ['00123456789','00986837265']
+to = ['00123456789', '00986837265']
 
 # Template
 template_namespace = "Your_Template_Namespace"
