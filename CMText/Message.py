@@ -13,8 +13,8 @@ class Message:
     MESSAGEPARTS_MAXIMUM = 8
     RECIPIENTS_MAXIMUM = 1000
 
-    def __init__(self, message, **kwargs):
-        self.body = message
+    def __init__(self, body, **kwargs):
+        self.body = body
         self.type = kwargs.get('type', MessageBodyTypes.AUTO)
         self.from_ = kwargs.get('from', self.SENDER_FALLBACK)
         self.to = kwargs.get('to', [])
