@@ -4,17 +4,14 @@ from CMText.version import __version__
 
 
 class Message:
-    # Class variables are shared among all instances.
-    #minimumNumberOfMessageParts = 1
-    #maximumNumberOfMessageParts = 8
-    #hybridAppKey = ''
+    # Class variables are shared among all instances. Moved instance variables to the constructor
     SENDER_FALLBACK = 'cm.com'
     MESSAGEPARTS_MINIMUM = 1
     MESSAGEPARTS_MAXIMUM = 8
     RECIPIENTS_MAXIMUM = 1000
 
-    def __init__(self, message, **kwargs):
-        self.body = message
+    def __init__(self, body, **kwargs):
+        self.body = body
         self.type = kwargs.get('type', MessageBodyTypes.AUTO)
         self.from_ = kwargs.get('from', self.SENDER_FALLBACK)
         self.to = kwargs.get('to', [])

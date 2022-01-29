@@ -21,7 +21,8 @@ class TextClient:
     # Send 1 message to one or multiple locations
     def SendSingleMessage(self, message, from_, to=[], reference=None, allowedChannels=None):
         self.messages.append(Message(message, from_=from_, to=to, reference=reference, allowedChannels=allowedChannels))
-        self.send()
+        response = self.send()
+        return response
 
     # Add a message to the list
     def AddMessage(self, message, from_='', to=[], reference=None, allowedChannels=None):
@@ -37,12 +38,12 @@ class TextClient:
         self.messages.append(Message(media=media, from_=from_, to=to, reference=reference, allowedChannels=['Whatsapp'],
                                      template=template))
 
-    def _validate_messages(self, messages, max):
+    def _validate_messages(self, messages, maximum):
 
         if len(messages) == 0:
             print('No messages in the queue')
             return False
-        if len(messages) > max:
+        if len(messages) > maximum:
             print('Messages exceeds MESSAGES_MAXIMUM')
             return False
         return True
