@@ -35,6 +35,11 @@ class TextClient:
     def AddWhatsappTemplateMessage(self, template, from_='', to=[], reference=None, media=None):
         self.messages.append(Message(media=media, from_=from_, to=to, reference=reference, allowedChannels=['Whatsapp'], template=template))
 
+    # Add an Interactive Whatsapp message to the list
+    def add_whatsapp_interactive_message(self, interactive, from_='', to=[], reference=None):
+        self.messages.append(
+            Message(to=to, from_=from_, reference=reference, allowedChannels=['Whatsapp'], interactive=interactive))
+
     # Send all messages in the list
     def send(self):
         if len(self.messages) == 0:
@@ -117,6 +122,41 @@ class TextClient:
                     },
                     {
                         "media": message.richContent,
+                    }]
+                }
+
+            if message.interactive is not None:
+                if message.interactive.header.media is not None:
+                    header = {
+                        "type": "image",
+                        "Media": {
+                            "mediaName": message.interactive.header.media.name,
+                            "mediaUri": message.interactive.header.media.uri,
+                            "mimeType": message.interactive.header.media.mimeType
+                        }
+                    }
+                else:
+                    header = {
+                        "type": message.interactive.header.type,
+                        "text": message.interactive.header.text
+                    }
+
+                header = message.interactive.header.encode()
+                action = message.interactive.action.encode()
+
+                temp["richContent"] = {
+                    "conversation": [{
+                        "interactive": {
+                            "type": message.interactive.type,
+                            "header": header,
+                            "body": {
+                                "text": message.interactive.body.text
+                            },
+                            "footer": {
+                                "text": message.interactive.footer.text
+                            },
+                            "action": action
+                        }
                     }]
                 }
 

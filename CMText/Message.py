@@ -15,13 +15,14 @@ class Message:
     allowedChannels = ['SMS']
     template = None
     richContent = None
+    interactive = None
     SENDER_FALLBACK = 'cm.com'
     MESSAGEPARTS_MINIMUM = 1
     MESSAGEPARTS_MAXIMUM = 8
     RECIPIENTS_MAXIMUM  = 1000
 
     # init function of class Message
-    def __init__(self, body='', type=MessageBodyTypes.AUTO, from_=None, to=[], reference=None, allowedChannels=None, media=None, template=None):
+    def __init__(self, body='', type=MessageBodyTypes.AUTO, from_=None, to=[], reference=None, allowedChannels=None, media=None, template=None, interactive=None):
         self.body = body
         self.type = type
         if from_ is not None:
@@ -41,6 +42,10 @@ class Message:
         # if template is not None
         if template is not None:
             self.template = template
+
+        # if interactive is not None
+        if interactive is not None:
+            self.interactive = interactive
 
         self.reference = reference
         self.AddRecipients(recipients=to)
