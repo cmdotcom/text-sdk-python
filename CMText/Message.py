@@ -1,61 +1,43 @@
 from CMText.MessageBodyTypes import MessageBodyTypes
-from CMText.Channels import Channels
+from CMText.Channels import implementedchannels
 from CMText.version import __version__
 
+
 class Message:
-    body = ''
-    type = ''
-    customgrouping3 = ''
-    from_ = ''
-    reference = ''
-    to = []
-    minimumNumberOfMessageParts = 1
-    maximumNumberOfMessageParts = 8
-    hybridAppKey = ''
-    allowedChannels = ['SMS']
-    template = None
-    richContent = None
+    # Class variables are shared among all instances. Moved instance variables to the constructor
     SENDER_FALLBACK = 'cm.com'
     MESSAGEPARTS_MINIMUM = 1
     MESSAGEPARTS_MAXIMUM = 8
-    RECIPIENTS_MAXIMUM  = 1000
+    RECIPIENTS_MAXIMUM = 1000
 
-    # init function of class Message
-    def __init__(self, body='', type=MessageBodyTypes.AUTO, from_=None, to=[], reference=None, allowedChannels=None, media=None, template=None):
+    def __init__(self, body, **kwargs):
         self.body = body
-        self.type = type
-        if from_ is not None:
-            self.from_ = from_
-        else:
-            self.from_ = self.SENDER_FALLBACK
-
-        # if allowedChannels is set and it exists in Channels:
-        ch = Channels()
-        if((allowedChannels != None) and ch.Check_Channels(allowedChannels=allowedChannels)):
-            self.allowedChannels = allowedChannels
-
-        # if media is not None
-        if media is not None:
-            self.richContent = media
-
-        # if template is not None
-        if template is not None:
-            self.template = template
-
-        self.reference = reference
-        self.AddRecipients(recipients=to)
-
-        self.minimumNumberOfMessageParts = self.MESSAGEPARTS_MINIMUM
-        self.maximumNumberOfMessageParts = self.MESSAGEPARTS_MAXIMUM
-
+        self.type = kwargs.get('type', MessageBodyTypes.AUTO)
+        self.from_ = kwargs.get('from', self.SENDER_FALLBACK)
+        self.to = kwargs.get('to', [])
+        self.reference = kwargs.get('reference')
+        self.allowedChannels = kwargs.get('allowedChannels', ['SMS'])
+        self.richContent = kwargs.get('media')
+        self.template = kwargs.get('template')
         self.customgrouping3 = 'text-sdk-python-' + __version__
 
-    # add an array of recipients
+        # check if given channels are all valid
+        for channel in self.allowedChannels:
+            if channel not in implementedchannels:
+                # TODO: log instead of print
+                print(channel + ' is not a valid Channel name. Check Spelling?')
+
     def AddRecipients(self, recipients=None):
+        """
+        Adds an array of extra recipients
+        :param recipients: array of recipients
+        :return: None
+        """
         if recipients is None:
             recipients = []
         # check if total recipients exceeds RECIPIENTS_MAXIMUM
-        if(len(self.to) + len(recipients) > self.RECIPIENTS_MAXIMUM):
+        if len(self.to) + len(recipients) > self.RECIPIENTS_MAXIMUM:
+            # TODO: log instead of print
             print('Maximum amount of Recipients exceeded. (' + str(self.RECIPIENTS_MAXIMUM) + ')')
         else:
             self.to = self.to + recipients

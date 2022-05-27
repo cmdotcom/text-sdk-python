@@ -44,7 +44,7 @@ template_parameters = [
 template = WhatsappTemplate(template_namespace, template_element_name, template_parameters)
 
 # Instantiate client with your own api-key
-client = TextClient(apikey=key)
+client = TextClient(apikey=UNIQUE_API_KEY)
 
 # Add message to queue
 client.AddWhatsappTemplateMessage(from_='pythonSDK', to=to, template=template)
