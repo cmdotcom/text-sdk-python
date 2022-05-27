@@ -71,7 +71,7 @@ By calling `AddWhatsappTemplateMessage` and providing `Template`, sender name, r
 See Examples folder for more examples.
 
 ## Sending Interactive Whatsapp message
-See the examples folder for an example.
+See the [example file](./Examples/Whatsapp_Interactive_Message_Example.py) for an example.
 
 ## Get the result
 Sending a message by calling `send` returns the response body. Response is of type: https://requests.readthedocs.io/en/master/user/quickstart/#response-content
