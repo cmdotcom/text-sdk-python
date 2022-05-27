@@ -43,7 +43,7 @@ mb_action = MessageBuilder.create_interactive_message_action(button='cta-button-
 mb_interactive = MessageBuilder.create_interactive_message(type='list', header=mb_header, body=mb_body,
                                                            footer=mb_footer, action=mb_action)
 
-client.add_whatsapp_interactive_message(from_="pythonSDK", interactive=mb_interactive, to=to)
+client.add_whatsapp_interactive_message(from_="pythonSDK", body='fallback-body', interactive=mb_interactive, to=to)
 
 # Instantiate client with your own api-key
 response = client.send()
