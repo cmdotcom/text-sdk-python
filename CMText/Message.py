@@ -10,15 +10,16 @@ class Message:
     MESSAGEPARTS_MAXIMUM = 8
     RECIPIENTS_MAXIMUM = 1000
 
-    def __init__(self, body, **kwargs):
+    def __init__(self, body='', **kwargs):
         self.body = body
         self.type = kwargs.get('type', MessageBodyTypes.AUTO)
         self.from_ = kwargs.get('from', self.SENDER_FALLBACK)
         self.to = kwargs.get('to', [])
         self.reference = kwargs.get('reference')
-        self.allowedChannels = kwargs.get('allowedChannels', ['SMS'])
+        self.allowedChannels = kwargs.get('allowedChannels')
         self.richContent = kwargs.get('media')
         self.template = kwargs.get('template')
+        self.interactive = kwargs.get('interactive')
         self.customgrouping3 = 'text-sdk-python-' + __version__
 
         # check if given channels are all valid

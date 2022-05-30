@@ -19,24 +19,33 @@ class TextClient:
         self.gateway = gateway
 
     # Send 1 message to one or multiple locations
-    def SendSingleMessage(self, message, from_, to=[], reference=None, allowedChannels=None):
+    def SendSingleMessage(self, message, from_, to=[], reference=None, allowedChannels=['SMS']):
         self.messages.append(Message(message, from_=from_, to=to, reference=reference, allowedChannels=allowedChannels))
         response = self.send()
         return response
 
     # Add a message to the list
-    def AddMessage(self, message, from_='', to=[], reference=None, allowedChannels=None):
+    def AddMessage(self, message, from_='', to=[], reference=None, allowedChannels=['SMS']):
         self.messages.append(Message(message, from_=from_, to=to, reference=reference, allowedChannels=allowedChannels))
 
     # Add a rich message to the list
-    def AddRichMessage(self, message, media, from_='', to=[], reference=None, allowedChannels=None):
+    def AddRichMessage(self, message, media, from_='', to=[], reference=None, allowedChannels=['Whatsapp']):
         self.messages.append(
             Message(message, media=media, from_=from_, to=to, reference=reference, allowedChannels=allowedChannels))
 
     # Add a Whatsapp Template message to the list
     def AddWhatsappTemplateMessage(self, template, from_='', to=[], reference=None, media=None):
-        self.messages.append(Message(media=media, from_=from_, to=to, reference=reference, allowedChannels=['Whatsapp'],
+        self.messages.append(Message(media=media,
+                                     from_=from_,
+                                     to=to,
+                                     reference=reference,
+                                     allowedChannels=['Whatsapp'],
                                      template=template))
+
+    # Add an Interactive Whatsapp message to the list
+    def add_whatsapp_interactive_message(self, interactive, body='', from_='', to=[], reference=None):
+        self.messages.append(
+            Message(to=to, body=body, from_=from_, reference=reference, allowedChannels=['Whatsapp'], interactive=interactive))
 
     def _validate_messages(self, messages, maximum):
 
@@ -128,6 +137,26 @@ class TextClient:
                         {
                             "media": message.richContent,
                         }]
+                }
+
+            if message.interactive is not None:
+                header = message.interactive.header.encode()
+                action = message.interactive.action.encode()
+
+                temp["richContent"] = {
+                    "conversation": [{
+                        "interactive": {
+                            "type": message.interactive.type,
+                            "header": header,
+                            "body": {
+                                "text": message.interactive.body.text
+                            },
+                            "footer": {
+                                "text": message.interactive.footer.text
+                            },
+                            "action": action
+                        }
+                    }]
                 }
 
             data['messages']['msg'] = data['messages']['msg'] + [temp]
