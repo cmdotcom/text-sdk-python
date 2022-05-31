@@ -1,6 +1,6 @@
-from CMText.MessageBodyTypes import MessageBodyTypes
-from CMText.Channels import implementedchannels
-from CMText.version import __version__
+from cm_text.message_body_types import MessageBodyTypes
+from cm_text.channels import implementedchannels
+from cm_text.version import __version__
 
 
 class Message:

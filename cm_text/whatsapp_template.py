@@ -1,4 +1,3 @@
-from CMText.version import __version__
 
 class WhatsappTemplate:
     namespace = ''
@@ -16,4 +15,3 @@ class WhatsappTemplate:
         self.media = media
         self.language_policy = language_policy
         self.language_code = language_code
-

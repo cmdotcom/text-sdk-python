@@ -1,6 +1,6 @@
 # Text-sdk-python
 ![publish to PyPi](https://github.com/cmdotcom/text-sdk-python/workflows/publish%20to%20PyPi/badge.svg)
-![PyPi](https://img.shields.io/pypi/v/CM_text_sdk_python
+![PyPi](https://img.shields.io/pypi/v/cm_text_sdk_python
 )
 
 ## A helper library to sending messages using python.
@@ -10,14 +10,14 @@ If you want to get all the functionalities, go to: [CM.com API Docs](https://doc
 ## Installing
 Include the SDK by downloading the files manually or running the following command in a Python Shell.
 ```cs
-    pip install CM_Text_sdk_python
+    pip install cm_Text_sdk_python
 ```
 
 ## Instantiate the client
 Use your productToken which authorizes you on the CM platform. Get yours on CM.com
 
 ```cs
-    from CMText.TextClient import TextClient
+    from cm_text import TextClient
 
     client = TextClient(apikey=key)
 ```
@@ -71,7 +71,7 @@ By calling `AddWhatsappTemplateMessage` and providing `Template`, sender name, r
 See Examples folder for more examples.
 
 ## Sending Interactive Whatsapp message
-See the [example file](./Examples/Whatsapp_Interactive_Message_Example.py) for an example.
+See the [example file](examples/07_whatsapp_interactive_message.py) for an example.
 
 ## Get the result
 Sending a message by calling `send` returns the response body. Response is of type: https://requests.readthedocs.io/en/master/user/quickstart/#response-content

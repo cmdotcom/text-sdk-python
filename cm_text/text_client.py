@@ -1,7 +1,6 @@
-from CMText.Gateways import Gateways
-from CMText.Message import Message
-from CMText.WhatsappTemplate import WhatsappTemplate
-from CMText.version import __version__
+from cm_text.gateways import Gateways
+from cm_text.message import Message
+from cm_text.version import __version__
 import json
 import requests
 
@@ -74,7 +73,7 @@ class TextClient:
 
             # Send the message(s)
             try:
-                response = requests.post("https://gw.cmtelecom.com/v1.0/message", data=data, headers=headers)
+                response = requests.post(url=self.gateway, data=data, headers=headers)
             except Exception as e:
                 print(e)
 

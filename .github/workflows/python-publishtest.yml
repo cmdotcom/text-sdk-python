@@ -7,7 +7,7 @@ on:
   push:
     paths: 
     - '!**'
-    - 'CMText/version.py'
+    - 'cm_text/version.py'
 
 jobs:  
   deploy:
