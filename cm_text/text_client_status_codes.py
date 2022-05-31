@@ -1,5 +1,8 @@
 
 class TextClientStatusCodes:
+    """
+    Class containing all status codes.
+    """
     OK = 0
     AUTHENTICATION_FAILED = 101
     BALANCE_INSUFFICIENT = 102

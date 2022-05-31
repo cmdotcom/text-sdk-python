@@ -1,6 +1,5 @@
 
 # list of all implemented channels
-
 implementedchannels = ['SMS',
                        'Whatsapp',
                        'Push',

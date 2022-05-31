@@ -1,18 +1,22 @@
-from cm_text.gateways import Gateways
-from cm_text.message import Message
-from cm_text.version import __version__
 import json
 import requests
 
+from cm_text.gateways import Gateways
+from cm_text.message import Message
+from cm_text.version import __version__
+
 
 class TextClient:
+    """
+    General purpose Text Client for interacting with the CM API
+    """
     gateway = ''
     apikey = ''
     messages = []
     MESSAGES_MAXIMUM = 100
     VERSION = __version__
 
-    # Initialize Client with defaul Gateway Gateways.Global
+    # Initialize Client with default Gateway Gateways.Global
     def __init__(self, apikey, gateway=Gateways.Global):
         self.apikey = apikey
         self.gateway = gateway
@@ -46,8 +50,8 @@ class TextClient:
         self.messages.append(
             Message(to=to, body=body, from_=from_, reference=reference, allowedChannels=['Whatsapp'], interactive=interactive))
 
+    # Validation if amount of messages dont exceed maximum or equals 0
     def _validate_messages(self, messages, maximum):
-
         if len(messages) == 0:
             print('No messages in the queue')
             return False
@@ -58,9 +62,7 @@ class TextClient:
 
     # Send all messages in the list
     def send(self):
-
         if self._validate_messages(self.messages, self.MESSAGES_MAXIMUM):
-
             # Set data for post
             data = self.encodeData(self.messages)
 

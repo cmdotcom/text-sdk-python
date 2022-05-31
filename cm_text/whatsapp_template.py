@@ -1,5 +1,8 @@
 
 class WhatsappTemplate:
+    """
+    Whatsapp Template Class.
+    """
     namespace = ''
     element_name = ''
     language_policy = ''
@@ -7,7 +10,6 @@ class WhatsappTemplate:
     components = []
     media = None
 
-    # init function of class Message
     def __init__(self, namespace, element_name, components=[], media=None, language_policy="deterministic", language_code="en"):
         self.namespace = namespace
         self.element_name = element_name
