@@ -10,7 +10,7 @@ If you want to get all the functionalities, go to: [CM.com API Docs](https://doc
 ## Installing
 Include the SDK by downloading the files manually or running the following command in a Python Shell.
 ```python3
-    pip install cm_Text_sdk_python
+    pip install cm_text_sdk_python
 ```
 
 ## Instantiate the client
