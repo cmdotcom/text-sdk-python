@@ -118,6 +118,7 @@ class TextClient:
                 response = requests.post(url=self.gateway, data=data, headers=headers)
             except Exception as e:
                 print(e)
+                raise
 
             # Clear messages
             self.messages = []
