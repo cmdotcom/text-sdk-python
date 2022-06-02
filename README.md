@@ -1,6 +1,6 @@
 # Text-sdk-python
 ![publish to PyPi](https://github.com/cmdotcom/text-sdk-python/workflows/publish%20to%20PyPi/badge.svg)
-![PyPi](https://img.shields.io/pypi/v/CM_text_sdk_python
+![PyPi](https://img.shields.io/pypi/v/cm_text_sdk_python
 )
 
 ## A helper library to sending messages using python.
@@ -9,15 +9,15 @@ If you want to get all the functionalities, go to: [CM.com API Docs](https://doc
 
 ## Installing
 Include the SDK by downloading the files manually or running the following command in a Python Shell.
-```cs
-    pip install CM_Text_sdk_python
+```python3
+    pip install cm_text_sdk_python
 ```
 
 ## Instantiate the client
 Use your productToken which authorizes you on the CM platform. Get yours on CM.com
 
-```cs
-    from CMText.TextClient import TextClient
+```python3
+    from cm_text import TextClient
 
     client = TextClient(apikey=key)
 ```
@@ -25,7 +25,7 @@ Use your productToken which authorizes you on the CM platform. Get yours on CM.c
 ## Send a message
 By calling `SendSingleMessage` and providing message text, sender name, recipient phone number(s).
 
-```cs
+```python3
     client = TextClient(apikey=key)
     client.SendSingleMessage(message=message, from_='CM.com', to=Recipients)
 ```
@@ -33,7 +33,7 @@ By calling `SendSingleMessage` and providing message text, sender name, recipien
 ## Sending multiple messages
 By calling `AddMessage` and providing message text, sender name, recipient phone number(s) you can queue multiple messages. Send them by calling `send`.
 
-```cs
+```python3
     client = TextClient(apikey=key)
     client.AddMessage(message=message, from_='pythonSDK', to=Recipients)
     client.AddMessage(message=message2, from_='pythonSDK', to=Recipients2)
@@ -43,7 +43,7 @@ By calling `AddMessage` and providing message text, sender name, recipient phone
 ## Sending a rich message
 By calling `AddRichMessage` and providing `Media`, message text, sender name, recipient phone number(s) you can queue multiple Rich messages. Send them by calling `send`.
 
-```cs
+```python3
     media = {
             "mediaName": "conversational-commerce",
             "mediaUri": "https://www.cm.com/cdn/cm/cm.png",
@@ -58,7 +58,7 @@ By calling `AddRichMessage` and providing `Media`, message text, sender name, re
 ## Sending a Whatsapp Template message
 By calling `AddWhatsappTemplateMessage` and providing `Template`, sender name, recipient phone number(s) you can queue multiple Whatsapp Template messages. Send them by calling `send`.
 
-```cs
+```python3
     template_namespace = "Your-Template-Namespace"
     template_element_name = "Replace with Template Name"
     template = WhatsappTemplate(template_namespace, template_element_name)
@@ -71,10 +71,10 @@ By calling `AddWhatsappTemplateMessage` and providing `Template`, sender name, r
 See Examples folder for more examples.
 
 ## Sending Interactive Whatsapp message
-See the [example file](./Examples/Whatsapp_Interactive_Message_Example.py) for an example.
+See the [example file](examples/07_whatsapp_interactive_message.py) for an example.
 
 ## Get the result
 Sending a message by calling `send` returns the response body. Response is of type: https://requests.readthedocs.io/en/master/user/quickstart/#response-content
-```cs
+```python3
     response = client.send()
 ```

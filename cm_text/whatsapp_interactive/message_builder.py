@@ -1,9 +1,9 @@
-from CMText.whatsapp_interactive.InteractiveMessage import InteractiveMessage
-from CMText.whatsapp_interactive.MessageAction import MessageAction, MessageActionSection, MessageActionRow, \
+from cm_text.whatsapp_interactive.interactive_message import InteractiveMessage
+from cm_text.whatsapp_interactive.message_action import MessageAction, MessageActionSection, MessageActionRow, \
     MessageActionButton, MessageActionButtonReply
-from CMText.whatsapp_interactive.MessageBody import MessageBody
-from CMText.whatsapp_interactive.MessageHeader import MessageHeader, MessageHeaderMedia
-from CMText.whatsapp_interactive.MessageFooter import MessageFooter
+from cm_text.whatsapp_interactive.message_body import MessageBody
+from cm_text.whatsapp_interactive.message_header import MessageHeader, MessageHeaderMedia
+from cm_text.whatsapp_interactive.message_footer import MessageFooter
 
 
 class MessageBuilder:

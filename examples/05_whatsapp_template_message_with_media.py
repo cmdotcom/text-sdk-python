@@ -1,6 +1,6 @@
 import os
-from CMText.TextClient import TextClient
-from CMText.WhatsappTemplate import WhatsappTemplate
+from cm_text import TextClient
+from cm_text import WhatsappTemplate
 
 # fetch the API key from environment variables
 UNIQUE_API_KEY = os.getenv("CM_API_KEY")

@@ -1,6 +1,8 @@
-from CMText.version import __version__
 
 class WhatsappTemplate:
+    """
+    Whatsapp Template Class.
+    """
     namespace = ''
     element_name = ''
     language_policy = ''
@@ -8,7 +10,6 @@ class WhatsappTemplate:
     components = []
     media = None
 
-    # init function of class Message
     def __init__(self, namespace, element_name, components=[], media=None, language_policy="deterministic", language_code="en"):
         self.namespace = namespace
         self.element_name = element_name
@@ -16,4 +17,3 @@ class WhatsappTemplate:
         self.media = media
         self.language_policy = language_policy
         self.language_code = language_code
-

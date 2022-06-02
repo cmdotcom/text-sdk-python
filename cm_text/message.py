@@ -1,19 +1,21 @@
-from CMText.MessageBodyTypes import MessageBodyTypes
-from CMText.Channels import implementedchannels
-from CMText.version import __version__
+from cm_text.message_body_types import MessageBodyTypes
+from cm_text.channels import implementedchannels
+from cm_text.version import __version__
 
 
 class Message:
-    # Class variables are shared among all instances. Moved instance variables to the constructor
-    SENDER_FALLBACK = 'cm.com'
-    MESSAGEPARTS_MINIMUM = 1
-    MESSAGEPARTS_MAXIMUM = 8
-    RECIPIENTS_MAXIMUM = 1000
+    """
+    General purpose Message Class.
+    """
+    sender_fallback = 'cm.com'
+    message_parts_minimum = 1
+    message_parts_maximum = 8
+    recipients_maximum = 1000
 
     def __init__(self, body='', **kwargs):
         self.body = body
         self.type = kwargs.get('type', MessageBodyTypes.AUTO)
-        self.from_ = kwargs.get('from', self.SENDER_FALLBACK)
+        self.from_ = kwargs.get('from', self.sender_fallback)
         self.to = kwargs.get('to', [])
         self.reference = kwargs.get('reference')
         self.allowedChannels = kwargs.get('allowedChannels')
@@ -37,8 +39,8 @@ class Message:
         if recipients is None:
             recipients = []
         # check if total recipients exceeds RECIPIENTS_MAXIMUM
-        if len(self.to) + len(recipients) > self.RECIPIENTS_MAXIMUM:
+        if len(self.to) + len(recipients) > self.recipients_maximum:
             # TODO: log instead of print
-            print('Maximum amount of Recipients exceeded. (' + str(self.RECIPIENTS_MAXIMUM) + ')')
+            print('Maximum amount of Recipients exceeded. (' + str(self.recipients_maximum) + ')')
         else:
             self.to = self.to + recipients
