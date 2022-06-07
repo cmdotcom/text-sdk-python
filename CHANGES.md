@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.0.1] - 2022-06-07  (Joris Pennings)
+### Added
+- __init__.py to new subfolder as a fix for the published module.
+
 ## [2.0.0] - 2022-05-31  (Joris Pennings)
 ### Added
 - Changelog to repository.
