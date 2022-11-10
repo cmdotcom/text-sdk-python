@@ -15,7 +15,8 @@ class Message:
     def __init__(self, body='', **kwargs):
         self.body = body
         self.type = kwargs.get('type', MessageBodyTypes.AUTO)
-        self.from_ = kwargs.get('from', self.sender_fallback)
+        # 'from' is a Python keyword, used in imports, therefore using 'from_'
+        self.from_ = kwargs.get('from_', self.sender_fallback)
         self.to = kwargs.get('to', [])
         self.reference = kwargs.get('reference')
         self.allowedChannels = kwargs.get('allowedChannels')
