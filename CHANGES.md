@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.0.2] - 2022-11-10 (ricosuave73)
+### Fixed
+- Fixed a bug, where setting the sender was ignored.
+
 ## [2.0.1] - 2022-06-07  (Joris Pennings)
 ### Added
 - __init__.py to new subfolder as a fix for the published module.
