@@ -10,15 +10,13 @@ class TextClient:
     """
     General purpose Text Client for interacting with the CM API
     """
-    gateway = ''
-    apikey = ''
-    messages = []
     MESSAGES_MAXIMUM = 100
     VERSION = __version__
 
     def __init__(self, apikey, gateway=Gateways.Global):
         self.apikey = apikey
         self.gateway = gateway
+        self.messages = []
 
     def SendSingleMessage(self, message, from_, to=[], reference=None, allowedChannels=['SMS']):
         """
