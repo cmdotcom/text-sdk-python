@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.0.3] - 2023-03-28 (ricosuave73)
+### Fixed
+- Messages collection moved from class to instance. PR by sheepsy90.
+
 ## [2.0.2] - 2022-11-10 (ricosuave73)
 ### Fixed
 - Fixed a bug, where setting the sender was ignored.
