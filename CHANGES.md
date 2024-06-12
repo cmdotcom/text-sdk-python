@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.0.4] - 2024-06-12 (Joris Pennings)
+### Changed
+- Global gateway url
+
 ## [2.0.3] - 2023-03-28 (ricosuave73)
 ### Fixed
 - Messages collection moved from class to instance. PR by sheepsy90.
