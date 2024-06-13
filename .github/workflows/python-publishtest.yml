@@ -47,7 +47,7 @@ jobs:
     - name: Publish package distributions to testPyPI
       env:
         TWINE_USERNAME: __token__
-        TWINE_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+        TWINE_PASSWORD: ${{ secrets.TESTPYPI_API_PUBLISH_TOKEN }}
       run: |
         python3 -m pip install twine
         twine upload --repository testpypi dist/*
