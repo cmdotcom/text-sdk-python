@@ -10,8 +10,31 @@ on:
     - 'cm_text/version.py'
 
 jobs:
+  build:
+    name: Build distribution
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.x"
+    - name: Install pypa/build
+      run: >-
+        python3 -m
+        pip install
+        build
+        --user
+    - name: Build a binary wheel and a source tarball
+      run: python3 -m build
+    - name: Store the distribution packages
+      uses: actions/upload-artifact@v3
+      with:
+        name: python-package-distributions
+        path: dist/
+
   testpypi-publish:
-    name: Upload release to test PyPI
+    name: Publish Python distribution to testPyPI
     runs-on: ubuntu-latest
     environment:
       name: testpypi
@@ -19,8 +42,10 @@ jobs:
     permissions:
       id-token: write  # IMPORTANT: this permission is mandatory for trusted publishing
     steps:
-      - uses: actions/checkout@v2
-      - id: build
-        uses: OpenAstronomy/build-python-dist@v1
-      - name: Publish package distributions to testPyPI
-        uses: pypa/gh-action-pypi-publish@v1.8.14
+    - name: Download all the dists
+      uses: actions/download-artifact@v3
+      with:
+        name: python-package-distributions
+        path: dist/
+    - name: Publish package distributions to testPyPI
+      uses: pypa/gh-action-pypi-publish@v1.8.14
