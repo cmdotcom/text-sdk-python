@@ -20,11 +20,7 @@ jobs:
       with:
         python-version: "3.x"
     - name: Install pypa/build
-      run: >-
-        python3 -m
-        pip install
-        build
-        --user
+      run: python3 -m pip install build
     - name: Build a binary wheel and a source tarball
       run: python3 -m build
     - name: Store the distribution packages
@@ -41,6 +37,7 @@ jobs:
       url: https://test.pypi.org/p/cm-text-sdk-python
     permissions:
       id-token: write  # IMPORTANT: this permission is mandatory for trusted publishing
+      contents: read  # Add the contents permission for accessing repository contents
     steps:
     - name: Download all the dists
       uses: actions/download-artifact@v3
@@ -48,4 +45,9 @@ jobs:
         name: python-package-distributions
         path: dist/
     - name: Publish package distributions to testPyPI
-      uses: pypa/gh-action-pypi-publish@v1.8.14
+      env:
+        TWINE_USERNAME: __token__
+        TWINE_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        python3 -m pip install twine
+        twine upload --repository testpypi dist/*
