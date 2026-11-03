@@ -30,6 +30,7 @@ jobs:
         path: dist/
 
   testpypi-publish:
+    needs: build
     name: Publish Python distribution to testPyPI
     runs-on: ubuntu-latest
     environment:
