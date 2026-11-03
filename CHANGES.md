@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.0.5] - 2026-11-03
+### Security
+- Declare `requests>=2.32.4` as a dependency (fixes CVE-2024-35195, CVE-2024-47081 in older versions); minimum Python is now 3.8
+### Fixed
+- Publish workflows use `actions/upload-artifact`/`download-artifact` v4 (v3 is retired)
+
 ## [2.0.4] - 2024-06-12 (Joris Pennings)
 ### Changed
 - Global gateway url
